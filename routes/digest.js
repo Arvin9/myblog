@@ -21,6 +21,7 @@ router.get('/', function(req, res, next) {
  */
 router.post('/', function(req, res, next) {
   var digest = req.body;
+  console.log(req.body);
   var Digest = new models.Digest(digest);
   Digest.save(function (err, digest) {
     if (err) {

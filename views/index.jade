@@ -3,3 +3,32 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  <!-- 添加模块 -->
+  div.panel.panel-default
+    div.panel-heading= '添加'
+    div.panel-body
+      div.form-horizontal
+        div.form-group
+          div.col-sm-6
+            input(type='text',class='form-control',id='title',name='title',placeholder='标题')
+        div.form-group
+          div.col-sm-6
+            input(type='text',class='form-control',id='provenance',name='provenance',placeholder='来源')
+        div.form-group
+          div.col-sm-6
+            textarea(class='form-control',rows='3',id='content',name='content',placeholder='内容')
+      button(type='button',class='btn btn-info',id='submit')= '提交'
+
+  <!-- 显示模块 -->
+  for digest in digests
+    ul.list-group
+      li.list-group-item
+        div.media.bg-info
+          div.media-body
+            h2.media-heading.text-info= digest.title
+            p= digest.content
+            p(class='text-right',style='color:#8968CD') #{digest.provenance}&nbsp;&nbsp;
+              span(style='color:#8C8C8C')= digest.time
+
+block scripts
+  script(src='/javascripts/index.js')
